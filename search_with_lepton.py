@@ -42,7 +42,7 @@ DEFAULT_SEARCH_ENGINE_TIMEOUT = 5
 
 
 # If the user did not provide a query, we will use this default query.
-_default_query = "What is Habibi famous for?"
+_default_query = "Who said 'live long and prosper'?"
 
 # This is really the most important part of the rag model. It gives instructions
 # to the model on how to generate the answer. Of course, different models may

@@ -12,8 +12,8 @@ export default function Home() {
         <Logo></Logo>
         <Search></Search>
         <div className="flex gap-2 flex-wrap justify-center">
-          <PresetQuery query="What is Habibi thinking right now?"></PresetQuery>
-          <PresetQuery query="Why Hawaii likes outside?"></PresetQuery>
+          <PresetQuery query="Who said live long and prosper?"></PresetQuery>
+          <PresetQuery query="Why do we only see one side of the moon?"></PresetQuery>
         </div>
         <Footer></Footer>
       </div>
