@@ -3,6 +3,7 @@ import glob
 import json
 import os
 import re
+import uuid
 import threading
 import requests
 import traceback
@@ -42,7 +43,7 @@ DEFAULT_SEARCH_ENGINE_TIMEOUT = 5
 
 
 # If the user did not provide a query, we will use this default query.
-_default_query = "Who said 'live long and prosper'?"
+_default_query = "How many Neko cans can Habibi eat?"
 
 # This is really the most important part of the rag model. It gives instructions
 # to the model on how to generate the answer. Of course, different models may
@@ -136,6 +137,10 @@ def search_with_google(query: str, subscription_key: str, cx: str):
     json_content = response.json()
     try:
         contexts = json_content["items"][:REFERENCE_COUNT]
+        for item in contexts:
+            item['url'] = item['link']
+            item['name'] = item['title']
+            item['id'] = str(uuid.uuid4())
     except KeyError:
         logger.error(f"Error encountered: {json_content}")
         return []
@@ -319,7 +324,7 @@ class RAG(Photon):
             # as this demo.
             "BACKEND": "LEPTON",
             # If you are using google, specify the search cx.
-            "GOOGLE_SEARCH_CX": "",
+            "GOOGLE_SEARCH_CX": "a3da7ef5e901244d3",
             # Specify the LLM model you are going to use.
             "LLM_MODEL": "mixtral-8x7b",
             # For all the search queries and results, we will use the Lepton KV to
